@@ -16,10 +16,11 @@ namespace Async01 {
     public partial class MyView : Terminal.Gui.Window {
         
         private Terminal.Gui.Button normal_button;
-        
+
+        private Terminal.Gui.Button count_button;
+
         private void InitializeComponent() {
             this.normal_button = new Terminal.Gui.Button();
-            // this.label1 = new Terminal.Gui.Label();
             this.Width = Dim.Fill(0);
             this.Height = Dim.Fill(0);
             this.X = 0;
@@ -32,13 +33,25 @@ namespace Async01 {
             this.TextAlignment = Terminal.Gui.TextAlignment.Left;
             this.Title = "Press Ctrl+Q to quit";
             this.normal_button.Width = 12;
-            this.normal_button.X = Pos.Center();
+            this.normal_button.X = Pos.Center() - 40;
             this.normal_button.Y = Pos.Center() + 1;
             this.normal_button.Data = "normal_button";
-            this.normal_button.Text = "Click Me";
+            this.normal_button.Text = "Normal";
             this.normal_button.TextAlignment = Terminal.Gui.TextAlignment.Centered;
             this.normal_button.IsDefault = false;
             this.Add(this.normal_button);
+
+            this.count_button = new Terminal.Gui.Button();
+            this.count_button.Width = 12;
+            this.count_button.X = Pos.Center() + 40;
+            this.count_button.Y = Pos.Center() + 1;
+            this.count_button.Data = "count_button";
+            this.count_button.Text = "Count";
+            this.count_button.TextAlignment = Terminal.Gui.TextAlignment.Centered;
+            this.count_button.IsDefault = false;
+            this.Add(this.count_button);
+
+
         }
     }
 }

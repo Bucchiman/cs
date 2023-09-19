@@ -15,7 +15,7 @@ namespace Async01{
         
         public MyView() {
             InitializeComponent();
-            normal_button.Clicked += () => MessageBox.Query("Hello", "Hello There!", "Ok");
+            // normal_button.Clicked += () => MessageBox.Query("Hello", "Hello There!", "Ok");
         }
     }
 }
