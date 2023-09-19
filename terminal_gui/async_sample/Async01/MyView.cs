@@ -1,3 +1,11 @@
+/*
+    FileName:     MyView
+    Author:       8ucchiman
+    CreatedDate:  2023-09-19 14:56:09
+    LastModified: 2023-02-26 13:30:39 +0900
+    Reference:    8ucchiman.jp
+    Description:  ---
+*/
 
 //------------------------------------------------------------------------------
 
@@ -15,7 +23,60 @@ namespace Async01{
         
         public MyView() {
             InitializeComponent();
+            count_button.Clicked += () => this.count_button.Text = _count++.ToString();
+            normal_button.Clicked += () => {
+                var data = GetData();
+                MessageBox.Query("Done", "!");
+            };
+            thread_button.Clicked += () => {
+                var t = new Thread(GetDataAsync);
+                t.Start();
+            };
             // normal_button.Clicked += () => MessageBox.Query("Hello", "Hello There!", "Ok");
+        }
+
+        private void GetDataAsync () {        // 非同期は必ず戻り値なし(void)
+            var dtos = new List<DTO>();
+            for (int i=0; i<5; i++) {
+                Thread.Sleep(1000);
+                dtos.Add(new DTO(i.ToString(), DateTime.Now.ToString("HH:mm:ss")));
+            }
+
+
+            ///
+            /// this.Invokeを使う理由
+            /// ワーカースレッド上で画面のコントロールを操作をしてはいけないため
+            /// 画面のコントロールの操作はUIスレッドのみ行える
+            /// なお, terminal.guiではwindows.formではないためInvokeメソッドは使えない
+            ///
+            // this.Invoke((Action)delegate () {
+            //         MessageBox.Query("Done", "!!!!");
+            // });
+            // Application.MainLoop.Invoke((Action)delegate () {
+            //         MessageBox.Query("Done", "Threaddddddddd");
+            //         });
+            Application.MainLoop.Invoke(() => {
+                    MessageBox.Query("Done", "Threadd");
+                    });
+        }
+
+        private List<DTO> GetData() {
+            var result = new List<DTO> ();
+            for (int i=0; i<5; i++) {
+                System.Threading.Thread.Sleep(1000);
+                result.Add(new DTO(i.ToString(), DateTime.Now.ToString("HH:mm:ss")));
+            }
+            return result;
+        }
+
+        private sealed class DTO {
+            public DTO (string id, string datadate) {
+                Id = id;
+                DataDate = datadate;
+            }
+
+            public string Id {get; set;}
+            public string DataDate {get; set;}
         }
     }
 }
