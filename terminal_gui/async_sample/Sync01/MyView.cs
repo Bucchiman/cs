@@ -1,3 +1,11 @@
+/*
+    FileName:     cs
+    Author:       8ucchiman
+    CreatedDate:  2023-09-20 14:02:55
+    LastModified: 2023-02-26 13:30:39 +0900
+    Reference:    8ucchiman.jp
+    Description:  ---
+*/
 
 //------------------------------------------------------------------------------
 
@@ -20,7 +28,6 @@ namespace Sync01{
                 var data = GetData();
                 MessageBox.Query("Done", "!");
             };
-            // normal_button.Clicked += () => MessageBox.Query("Hello", "Hello There!", "Ok");
         }
 
         private List<DTO> GetData() {

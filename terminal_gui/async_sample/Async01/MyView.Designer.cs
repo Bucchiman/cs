@@ -15,16 +15,13 @@ namespace Async01 {
     
     public partial class MyView : Terminal.Gui.Window {
         
-        private Terminal.Gui.Button normal_button;
+        private Terminal.Gui.Button thread_button;
 
         private Terminal.Gui.Button count_button;
-
-        private Terminal.Gui.Button thread_button;
 
         private int _count = 0;
 
         private void InitializeComponent() {
-            this.normal_button = new Terminal.Gui.Button();
             this.Width = Dim.Fill(0);
             this.Height = Dim.Fill(0);
             this.X = 0;
@@ -36,14 +33,15 @@ namespace Async01 {
             this.Border.DrawMarginFrame = true;
             this.TextAlignment = Terminal.Gui.TextAlignment.Left;
             this.Title = "Press Ctrl+Q to quit";
-            this.normal_button.Width = 12;
-            this.normal_button.X = Pos.Center() - 40;
-            this.normal_button.Y = Pos.Center() + 1;
-            this.normal_button.Data = "normal_button";
-            this.normal_button.Text = "Normal";
-            this.normal_button.TextAlignment = Terminal.Gui.TextAlignment.Centered;
-            this.normal_button.IsDefault = false;
-            this.Add(this.normal_button);
+            this.thread_button = new Terminal.Gui.Button();
+            this.thread_button.Width = 12;
+            this.thread_button.X = Pos.Center() + 40;
+            this.thread_button.Y = Pos.Center() + 1;
+            this.thread_button.Data = "thread_button";
+            this.thread_button.Text = "Thread";
+            this.thread_button.TextAlignment = Terminal.Gui.TextAlignment.Centered;
+            this.thread_button.IsDefault = false;
+            this.Add(this.thread_button);
 
             this.count_button = new Terminal.Gui.Button();
             this.count_button.Width = 12;
@@ -54,17 +52,6 @@ namespace Async01 {
             this.count_button.TextAlignment = Terminal.Gui.TextAlignment.Centered;
             this.count_button.IsDefault = false;
             this.Add(this.count_button);
-
-            this.thread_button = new Terminal.Gui.Button();
-            this.thread_button.Width = 12;
-            this.thread_button.X = Pos.Center() + 40;
-            this.thread_button.Y = Pos.Center() + 20;
-            this.thread_button.Data = "thread_button";
-            this.thread_button.Text = "Thread";
-            this.thread_button.TextAlignment = Terminal.Gui.TextAlignment.Centered;
-            this.thread_button.IsDefault = false;
-            this.Add(this.thread_button);
-
         }
     }
 }

@@ -24,15 +24,10 @@ namespace Async01{
         public MyView() {
             InitializeComponent();
             count_button.Clicked += () => this.count_button.Text = _count++.ToString();
-            normal_button.Clicked += () => {
-                var data = GetData();
-                MessageBox.Query("Done", "!");
-            };
             thread_button.Clicked += () => {
                 var t = new Thread(GetDataAsync);
                 t.Start();
             };
-            // normal_button.Clicked += () => MessageBox.Query("Hello", "Hello There!", "Ok");
         }
 
         private void GetDataAsync () {        // 非同期は必ず戻り値なし(void)
@@ -58,15 +53,6 @@ namespace Async01{
             Application.MainLoop.Invoke(() => {
                     MessageBox.Query("Done", "Threadd");
                     });
-        }
-
-        private List<DTO> GetData() {
-            var result = new List<DTO> ();
-            for (int i=0; i<5; i++) {
-                System.Threading.Thread.Sleep(1000);
-                result.Add(new DTO(i.ToString(), DateTime.Now.ToString("HH:mm:ss")));
-            }
-            return result;
         }
 
         private sealed class DTO {

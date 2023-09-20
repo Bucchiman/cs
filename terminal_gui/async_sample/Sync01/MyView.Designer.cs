@@ -52,8 +52,6 @@ namespace Sync01 {
             this.count_button.TextAlignment = Terminal.Gui.TextAlignment.Centered;
             this.count_button.IsDefault = false;
             this.Add(this.count_button);
-
-
         }
     }
 }
