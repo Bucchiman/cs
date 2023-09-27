@@ -35,7 +35,7 @@ namespace Async01 {
             this.Title = "Press Ctrl+Q to quit";
             this.thread_button = new Terminal.Gui.Button();
             this.thread_button.Width = 12;
-            this.thread_button.X = Pos.Center() + 40;
+            this.thread_button.X = Pos.Center() - 40;
             this.thread_button.Y = Pos.Center() + 1;
             this.thread_button.Data = "thread_button";
             this.thread_button.Text = "Thread";

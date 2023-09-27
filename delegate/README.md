@@ -10,6 +10,10 @@
 
 # How to
 
+1. delegateの宣言
+2. delegateのインスタンス生成
+3. delegateの実行
+
 ```csharp
     delegate void del_func(int val);            # delegateの宣言
 
