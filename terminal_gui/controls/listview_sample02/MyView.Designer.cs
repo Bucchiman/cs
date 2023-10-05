@@ -13,17 +13,19 @@ namespace listview_sample02 {
     using Terminal.Gui;
     
     
-    public partial class MyView : Terminal.Gui.Window {
+    public partial class QueueView : Terminal.Gui.Window {
         
         private void InitializeComponent() {
-            this.Width = Dim.Fill(0);
-            this.Height = Dim.Fill(0);
-            this.X = 0;
-            this.Y = 0;
+            this.Width = Dim.Percent(20);
+            this.Height = Dim.Fill(0) - 10;
+            this.X = 10;
+            this.Y = 10;
+            Console.WriteLine($"{this.X}, {this.Y}, {this.Width}, {this.Height}");
             this.Modal = false;
-            this.Text = "";
-            this.Border.BorderStyle = Terminal.Gui.BorderStyle.Single;
-            this.Border.Effect3D = false;
+            this.ColorScheme = Colors.Error;
+            this.Text = "QueueView";
+            this.Border.BorderStyle = Terminal.Gui.BorderStyle.Rounded;
+            this.Border.Effect3D = true;
             this.Border.DrawMarginFrame = true;
             this.TextAlignment = Terminal.Gui.TextAlignment.Left;
             this.Title = "Press Ctrl+Q to quit";
@@ -38,6 +40,11 @@ namespace listview_sample02 {
                 new Button(3, 14, "Ok"),
                 new Button(10, 14, "Cancel"));
 
+        }
+    }
+
+    public partial class TimeLapseView : Terminal.Gui.Window {
+        private void InitializeComponent () {
         }
     }
 }

@@ -11,9 +11,15 @@ namespace listview_sample02{
     using Terminal.Gui;
     
     
-    public partial class MyView {
+    public partial class QueueView {
         
-        public MyView() {
+        public QueueView () {
+            InitializeComponent();
+        }
+    }
+
+    public partial class TimeLapseView {
+        public TimeLapseView () {
             InitializeComponent();
         }
     }

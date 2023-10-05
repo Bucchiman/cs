@@ -16,7 +16,7 @@ namespace listview_sample02 {
             Application.Init();
             var top = Application.Top;
 
-            top.Add(new MyView());
+            top.Add(new QueueView(), new TimeLapseView());
 
             // Add some controls
             Application.Run();
