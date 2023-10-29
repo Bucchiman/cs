@@ -16,30 +16,36 @@ namespace listview_sample02 {
     public partial class QueueView : Terminal.Gui.Window {
         
         private void InitializeComponent() {
-            this.Width = Dim.Percent(20);
-            this.Height = Dim.Fill(0) - 10;
+            this.Width = 20;
+            this.Height = 20;
             this.X = 10;
             this.Y = 10;
-            Console.WriteLine($"{this.X}, {this.Y}, {this.Width}, {this.Height}");
-            this.Modal = false;
-            this.ColorScheme = Colors.Error;
-            this.Text = "QueueView";
-            this.Border.BorderStyle = Terminal.Gui.BorderStyle.Rounded;
-            this.Border.Effect3D = true;
-            this.Border.DrawMarginFrame = true;
-            this.TextAlignment = Terminal.Gui.TextAlignment.Left;
-            this.Title = "Press Ctrl+Q to quit";
+            // this.Modal = false;
+            // this.ColorScheme = Colors.Error;
+            // this.Text = "QueueView";
+            // this.Border.BorderStyle = Terminal.Gui.BorderStyle.Single;
+            // this.Border.Effect3D = true;
+            // this.Border.DrawMarginFrame = true;
+            // this.TextAlignment = Terminal.Gui.TextAlignment.Left;
+            // this.Title = "Press Ctrl+Q to quit";
+
+            var listView = new ListView() {
+                X = 1,
+                Y = 2,
+                Height = Dim.Fill(),
+                Width = Dim.Fill(1),
+                AllowsMarking = false,
+                AllowsMultipleSelection = false
+            };
+
+            var currentDirectory = Environment.CurrentDirectory;
+            var files = Directory.GetFiles(currentDirectory);
+            Console.WriteLine($"{files}");
+            listView.SetSource(files);
 
             this.Add(
-                new Label(3, 2, "Choose Service: "),
-                new ListView(new Rect(20, 2, 16, 4), new string[] {
-                    "Opizo",
-                    "Bitly",
-                }),
-                new TextField(20, 6, 40, ""),
-                new Button(3, 14, "Ok"),
-                new Button(10, 14, "Cancel"));
-
+                listView
+            );
         }
     }
 
