@@ -1,0 +1,1 @@
+Code] double[,] a = new double[,] {{1, 2,}, {2, 1,}, {0, 1}}
